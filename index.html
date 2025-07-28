@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afrodisíaca - Lingerie Boutique</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar Fixa -->
+    <nav class="navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <div class="logo-container">
+            <img
+              src="assets/img/logo01.jpg"
+              alt="Afrodisíaca Logo"
+              class="rounded-logo"
+            />
+          </div>
+        </a>
+
+        <!-- Carrinho (Desktop e Mobile) -->
+<div class="cart-wrapper">
+  <button class="cart-btn" onclick="toggleCart()">
+    <div class="cart-icon">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count pulse">0</span>
+    </div>
+  </button>
+  
+  <!-- Carrinho Dropdown -->
+  <div id="cart-dropdown" class="cart-dropdown">
+    <div class="cart-header">
+      <h5>Meu Carrinho</h5>
+      <button class="close-cart" onclick="toggleCart()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="cart-items">
+      <!-- Items serão inseridos via JavaScript -->
+    </div>
+    
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span class="subtotal-value">R$ 0,00</span>
+      </div>
+      <button class="checkout-btn" onclick="checkoutWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+        <span>Finalizar Pedido</span>
+      </button>
+      <button class="continue-shopping" onclick="toggleCart()">
+        Continuar Comprando
+      </button>
+    </div>
+  </div>
+</div>
+    </nav>
+
+    <!-- Carrossel de Promoções -->
+<section class="instagram-carousel">
+  <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="insta-slide">
+          <img src="assets/img/logo01.jpg" alt="Promoção 1">
+          <div class="promo-badge">-30% OFF</div>
+        </div>
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="insta-slide">
+          <img src="assets/img/flora01.jpg" alt="Promoção 2">
+          <div class="promo-badge">NEW</div>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="insta-slide">
+          <img src="assets/img/yaya01.jpg" alt="Promoção 3">
+          <div class="promo-badge">FRETE GRÁTIS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores em formato de pontos -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="2"></button>
+    </div>
+  </div>
+</section>
+
+    <!-- Categorias em Círculos -->
+<section id="categorias" class="container my-5">
+  <h2 class="section-title">Nossas Coleções</h2>
+  
+  <div class="category-circles">
+    <!-- YAYA -->
+    <div class="category-item" data-category="yaya">
+      <div class="circle-img">
+        <img src="assets/img/yaya01.jpg" alt="Pijamas YAYA">
+      </div>
+      <span>Pijamas YAYA</span>
+    </div>
+
+    <!-- Flora -->
+    <div class="category-item" data-category="flora">
+      <div class="circle-img">
+        <img src="assets/img/flora01.jpg" alt="Pijamas Flora">
+      </div>
+      <span>Pijamas Flora</span>
+    </div>
+
+    <!-- Noite da Cigana -->
+    <div class="category-item" data-category="cigana">
+      <div class="circle-img">
+        <img src="assets/img/cigana01.jpg" alt="Noite da Cigana">
+      </div>
+      <span>Noite da Cigana</span>
+    </div>
+
+    <!-- Afrodite -->
+    <div class="category-item" data-category="afrodite">
+      <div class="circle-img">
+        <img src="assets/img/afrodite01.jpg" alt="Afrodite">
+      </div>
+      <span>Afrodite</span>
+    </div>
+
+    <!-- Cravo e Canela -->
+    <div class="category-item" data-category="cravo">
+      <div class="circle-img">
+        <img src="assets/img/cravo01.jpg" alt="Cravo e Canela">
+      </div>
+      <span>Cravo e Canela</span>
+    </div>
+  </div>
+</section>
+
+    <!-- Produtos -->
+    <main class="container">
+      <div id="products-grid" class="row g-4">
+        <!-- Produtos serão inseridos via JavaScript -->
+      </div>
+    </main>
+
+    <!-- Modal de Produto -->
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="product-modal-image">
+              <img src="" alt="" class="main-image">
+              <span class="zoom-hint">
+                <i class="fas fa-search-plus"></i>
+                Toque para zoom
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product-modal-info">
+              <span class="category-tag"></span>
+              <h2 class="product-title"></h2>
+              <div class="price-wrapper">
+                <span class="price"></span>
+                <span class="installments">ou 3x sem juros</span>
+              </div>
+              <p class="description"></p>
+              <div class="size-selector">
+                <h4>Tamanho</h4>
+                <div class="size-buttons"></div>
+              </div>
+              <div class="stock-info">
+                <i class="fas fa-truck"></i>
+                Frete grátis para compras acima de R$ 299
+              </div>
+              <button class="add-to-cart-modal">
+                Adicionar ao Carrinho
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+              <div class="additional-info">
+                <div class="info-item">
+                  <i class="fas fa-shield-alt"></i>
+                  Compra 100% segura
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-exchange-alt"></i>
+                  Troca grátis em até 30 dias
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Carrinho Lateral -->
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h5>Seu Carrinho</h5>
+        <button onclick="toggleCart()" class="close-cart">&times;</button>
+      </div>
+      <div class="cart-items">
+        <!-- Itens do carrinho serão inseridos aqui -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span class="total-value">R$ 0,00</span>
+        </div>
+        <button class="checkout-btn" onclick="checkoutWhatsApp()">
+          Finalizar via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- Adicione antes do fechamento do body -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Sobre a Afrodisíaca</h5>
+        <p>Lingerie boutique especializada em peças exclusivas para mulheres que buscam conforto e sensualidade.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Formas de Pagamento</h5>
+        <div class="payment-methods">
+          <img src="assets/img/payments/visa.png" alt="Visa">
+          <img src="assets/img/payments/mastercard.png" alt="Mastercard">
+          <img src="assets/img/payments/elo.png" alt="Elo">
+          <img src="assets/img/payments/pix.png" alt="PIX">
+        </div>
+        <div class="security-seals">
+          <img src="assets/img/security/ssl.png" alt="SSL Secure">
+          <img src="assets/img/security/safe-buy.png" alt="Compra Segura">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Atendimento</h5>
+        <ul class="contact-info">
+          <li><i class="far fa-clock"></i> Segunda a Sexta: 9h às 18h</li>
+          <li><i class="fab fa-whatsapp"></i> (11) 99999-9999</li>
+          <li><i class="far fa-envelope"></i> contato@afrodisiaca.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Afrodisíaca - Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a
+      href="https://wa.me/5511999999999"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
